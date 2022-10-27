@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
       ),
       home: Scaffold(
         body: const DefaultTextStyle(
-          style: TextStyle(fontSize: 30),
+          style: TextStyle(fontSize: 30, color: Colors.black),
           child: EuchreHelper(),
         ),
         bottomSheet: Center(
@@ -27,8 +27,21 @@ class MainApp extends StatelessWidget {
           child: RichText(
             text: TextSpan(children: [
               hyperlink(
-                  label: "Icons", url: "https://www.me.uk/cards/makeadeck.cgi"),
-              const TextSpan(text: " • Powered by "),
+                label: "Source",
+                url: "https://github.com/object-Object/euchre_helper",
+              ),
+              const TextSpan(
+                text: " • ",
+                style: TextStyle(color: Colors.grey),
+              ),
+              hyperlink(
+                label: "Icons",
+                url: "https://www.me.uk/cards/makeadeck.cgi",
+              ),
+              const TextSpan(
+                text: " • Powered by ",
+                style: TextStyle(color: Colors.grey),
+              ),
               hyperlink(label: "Flutter", url: "https://flutter.dev/"),
             ]),
           ),
@@ -41,7 +54,10 @@ class MainApp extends StatelessWidget {
 TextSpan hyperlink({required String label, required String url}) {
   return TextSpan(
     text: label,
-    style: const TextStyle(decoration: TextDecoration.underline),
+    style: const TextStyle(
+      decoration: TextDecoration.underline,
+      color: Colors.grey,
+    ),
     recognizer: TapGestureRecognizer()
       ..onTap = () => launchUrl(
             Uri.parse(url),

@@ -11,8 +11,8 @@ class EuchreHelper extends StatefulWidget {
 }
 
 class _EuchreHelperState extends State<EuchreHelper> {
-  Suit trump = Suit.hearts;
-  Suit leading = Suit.spades;
+  Suit trump = Suit.diamonds;
+  Suit leading = Suit.clubs;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,22 @@ class _EuchreHelperState extends State<EuchreHelper> {
             leading: leading,
             iconSize: 96,
           ),
+          const SizedBox(height: 16),
         ],
       ),
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    // precache all the assets so they don't blink
+    for (Suit suit in Suit.values) {
+      precacheImage(Image.asset(suit.path).image, context);
+      for (Rank rank in Rank.values) {
+        precacheImage(Image.asset(PlayingCard(suit, rank).path).image, context);
+      }
+    }
   }
 }

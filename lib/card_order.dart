@@ -28,7 +28,7 @@ class CardOrder extends StatelessWidget {
         .map((c) => Container(
               padding: const EdgeInsets.only(bottom: 16),
               child: Image.asset(
-                c.filename,
+                c.path,
                 height: iconSize,
               ),
             ))

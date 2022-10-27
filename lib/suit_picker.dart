@@ -50,7 +50,7 @@ class _SuitPickerState extends State<SuitPicker> {
                       widget.setSuit(suit);
                     },
                     child: Image.asset(
-                      suit.filename,
+                      suit.path,
                       width: widget.iconSize,
                       height: widget.iconSize,
                     ),
@@ -64,7 +64,7 @@ class _SuitPickerState extends State<SuitPicker> {
         GestureDetector(
           onTap: () => setState(() => isPicking = true),
           child: Image.asset(
-            widget.suit.filename,
+            widget.suit.path,
             width: widget.iconSize,
             height: widget.iconSize,
           ),
